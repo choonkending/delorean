@@ -1,4 +1,4 @@
-module Lib
+module Drive
   where
 
 import Control.Lens ((.~), (<&>))
@@ -9,9 +9,10 @@ import Network.Google.Env (envScopes, newEnv, envLogger)
 import System.IO (stdout)
 import Control.Monad.IO.Class (liftIO)
 
+-- This reads your credentials from ~/.config/gcloud/application_default_credentials.json
 getFiles :: IO ()
 getFiles = do
   lgr <- newLogger Debug stdout
   env <- newEnv <&> (envLogger .~ lgr) . (envScopes .~ driveReadOnlyScope)
   runResourceT . runGoogle env $
-    send (filesList) >>= liftIO . print
+    send filesList >>= liftIO . print

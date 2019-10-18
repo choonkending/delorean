@@ -1,6 +1,6 @@
 module Main where
 
-import Lib (getFiles)
+import Drive (getFiles)
 
 main :: IO ()
 main = getFiles
