@@ -13,6 +13,4 @@ getFiles :: IO ()
 getFiles = do
   lgr <- newLogger Debug stdout
   env <- newEnv <&> (envLogger .~ lgr) . (envScopes .~ driveReadOnlyScope)
-  runResourceT (runGoogle env $ send filesList)
-
-
+  runResourceT (runGoogle env $ send filesList) >>= print
