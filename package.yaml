@@ -26,6 +26,9 @@ dependencies:
 - gogol-drive == 0.5.0.*
 - lens
 - transformers
+- conduit
+- bytestring
+- resourcet
 
 library:
   source-dirs: src
